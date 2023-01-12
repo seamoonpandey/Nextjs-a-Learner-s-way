@@ -26,19 +26,20 @@ function NewsletterRegistration() {
         'Content-Type': 'application/json',
       },
 
-    }).then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-
-      response.json().then(error => {
-        notificationCtx.showNotification({
-          title: 'Error!',
-          message: error.message || "Something went wrong!",
-          status: 'error'
-        });
-      });
     })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        response.json().then(error => {
+          notificationCtx.showNotification({
+            title: 'Error!',
+            message: error.message || "Something went wrong!",
+            status: 'error'
+          });
+        });
+      })
       .then(data => {
         notificationCtx.showNotification({
           title: "Success!",
